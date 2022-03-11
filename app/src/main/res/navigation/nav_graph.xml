@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.codial.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_listCourse"
+            app:destination="@id/listCourse" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCourse"
+        android:name="com.example.codial.ListCourse"
+        android:label="fragment_list_course"
+        tools:layout="@layout/fragment_list_course" >
+        <action
+            android:id="@+id/action_listCourse_to_aboutCourse"
+            app:destination="@id/aboutCourse" />
+        <argument
+            android:name="itemId"
+            app:argType="com.example.codial.models.Courses" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutCourse"
+        android:name="com.example.codial.AboutCourse"
+        android:label="fragment_about_course"
+        tools:layout="@layout/fragment_about_course" >
+        <action
+            android:id="@+id/action_aboutCourse_to_listCourse"
+            app:destination="@id/listCourse" />
+        <action
+            android:id="@+id/action_aboutCourse_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/listMentor"
+        android:name="com.example.codial.ListMentor"
+        android:label="fragment_list_mentor"
+        tools:layout="@layout/fragment_list_mentor" />
+    <fragment
+        android:id="@+id/scheduleMentors"
+        android:name="com.example.codial.ScheduleMentors"
+        android:label="fragment_schedule_mentors"
+        tools:layout="@layout/fragment_schedule_mentors" >
+        <action
+            android:id="@+id/action_scheduleMentors_to_newMentorField"
+            app:destination="@id/newMentorField" />
+    </fragment>
+    <fragment
+        android:id="@+id/newMentorField"
+        android:name="com.example.codial.NewMentorField"
+        android:label="fragment_new_mentor_field"
+        tools:layout="@layout/fragment_new_mentor_field" >
+        <action
+            android:id="@+id/action_newMentorField_to_scheduleMentors"
+            app:destination="@id/scheduleMentors" />
+        <argument
+            android:name="mentor_id"
+            app:argType="com.example.codial.models.Mentors" />
+        <argument
+            android:name="mentor_key"
+            app:argType="com.example.codial.models.Mentors" />
+    </fragment>
+</navigation>

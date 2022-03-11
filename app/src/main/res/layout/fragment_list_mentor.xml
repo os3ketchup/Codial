@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ListMentor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/course_toolbar"
+            android:background="#FFEB3B"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Barcha kurslar ro'yxati">
+            <ImageView
+                android:id="@+id/toolbar_add_icon"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                android:layout_gravity="right"/>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_course_name"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

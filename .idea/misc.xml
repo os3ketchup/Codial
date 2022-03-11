@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/add_new_mentor.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/course_dialog.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/delete_course_dialog.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_about_course.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_home.xml" value="0.12" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_list_course.xml" value="0.2" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_list_mentor.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_new_mentor_field.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_schedule_mentors.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_group.xml" value="0.2" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_mentor.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

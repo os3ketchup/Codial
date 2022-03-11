@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AboutCourse">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/about_course_toolbar"
+            android:background="#FFEB3B"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Barcha kurslar ro'yxati">
+            <ImageView
+                android:id="@+id/toolbar_delete_icon"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:layout_gravity="right"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+    </LinearLayout>
+</LinearLayout>
