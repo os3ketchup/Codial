@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/drawable/ic_delete.xml" value="0.163" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/add_new_mentor.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/course_dialog.xml" value="0.22826086956521738" />
@@ -10,11 +11,20 @@
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_about_course.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_home.xml" value="0.12" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_list_course.xml" value="0.2" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_list_group.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_list_mentor.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_new_mentor_field.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_opened_groups.xml" value="0.176" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_schedule_groups.xml" value="0.152" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_schedule_mentors.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/fragment_will_open_groups.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/group_dialog.xml" value="0.23007246376811594" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_group.xml" value="0.2" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_mentor.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_spinner.xml" value="0.23007246376811594" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_sub_group.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/item_view_pager_groups.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/mentor_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/Codial/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
       </map>
     </option>

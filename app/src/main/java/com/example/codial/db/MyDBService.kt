@@ -16,7 +16,7 @@ interface MyDBService {
     fun showGroup():List<Groups>
     fun editGroup(groups: Groups):Int
     fun deleteGroup(groups: Groups)
-    fun getGroupById(id: Int):Groups
+
 
     fun addMentor(mentors: Mentors)
     fun showMentor():List<Mentors>

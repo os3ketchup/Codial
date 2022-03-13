@@ -36,7 +36,6 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
         const val MENTOR_NAME = "ismi"
         const val MENTOR_SURNAME = "familyasi"
         const val MENTOR_PHONE_NUMBER = "telefon_raqami"
-        const val MENTORS_GROUP_ID = "guruh_id"
         const val MENTORS_COURSE_ID = "kurs_id"
 
         const val TABLE_STUDENTS = "Talabalar"
@@ -52,7 +51,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
     override fun onCreate(p0: SQLiteDatabase?) {
         val courseQuery = "CREATE TABLE $TABLE_COURSE ($COURSE_ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, $COURSE_NAME TEXT NOT NULL, $COURSE_INFO TEXT NOT NULL) "
         val groupQuery = "CREATE TABLE $TABLE_GROUPS($GROUP_ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,$GROUP_NAME TEXT NOT NULL, $GROUP_DAY TEXT NOT NULL, $GROUP_TIME TEXT NOT NULL,$GROUP_AMOUNT_STUDENT INTEGER NOT NULL,$GROUPS_MENTOR_ID INTEGER NOT NULL, $GROUPS_COURSE_ID INTEGER NOT NULL, FOREIGN KEY ($GROUPS_COURSE_ID) REFERENCES $TABLE_COURSE($COURSE_ID),FOREIGN KEY ($GROUPS_MENTOR_ID) REFERENCES $TABLE_MENTORS($MENTOR_ID))"
-        val mentorQuery = "CREATE TABLE $TABLE_MENTORS($MENTOR_ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, $MENTOR_NAME TEXT NOT NULL, $MENTOR_SURNAME TEXT NOT NULL, $MENTOR_PHONE_NUMBER TEXT NOT NULL, $MENTORS_GROUP_ID INTEGER NOT NULL, $MENTORS_COURSE_ID INTEGER NOT NULL, FOREIGN KEY ($MENTORS_COURSE_ID) REFERENCES $TABLE_COURSE($COURSE_ID), FOREIGN KEY ($MENTORS_GROUP_ID) REFERENCES $TABLE_GROUPS($GROUP_ID))"
+        val mentorQuery = "CREATE TABLE $TABLE_MENTORS($MENTOR_ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, $MENTOR_NAME TEXT NOT NULL, $MENTOR_SURNAME TEXT NOT NULL, $MENTOR_PHONE_NUMBER TEXT NOT NULL, $MENTORS_COURSE_ID INTEGER NOT NULL, FOREIGN KEY ($MENTORS_COURSE_ID) REFERENCES $TABLE_COURSE($COURSE_ID))"
         val studentQuery = "CREATE TABLE $TABLE_STUDENTS($STUDENT_ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,$STUDENT_NAME TEXT NOT NULL, $STUDENT_SURNAME TEXT NOT NULL,$STUDENT_PHONE_NUMBER TEXT NOT NULL, $STUDENT_MENTOR_ID INTEGER NOT NULL, $STUDENT_GROUP_ID INTEGER NOT NULL, $STUDENT_COURSE_ID INTEGER NOT NULL, FOREIGN KEY ($STUDENT_MENTOR_ID) REFERENCES $TABLE_MENTORS ($MENTOR_ID), FOREIGN KEY ($STUDENT_GROUP_ID) REFERENCES $TABLE_GROUPS($GROUP_ID), FOREIGN KEY ($STUDENT_COURSE_ID) REFERENCES $TABLE_COURSE ($COURSE_ID))"
         p0?.execSQL(courseQuery)
         p0?.execSQL(groupQuery)
@@ -113,11 +112,38 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
     }
 
     override fun addGroup(groups: Groups) {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(GROUP_NAME,groups.name)
+        contentValues.put(GROUPS_MENTOR_ID,groups.mentors?.id)
+        contentValues.put(GROUP_TIME,groups.timeStarting)
+        contentValues.put(GROUP_DAY,groups.dataAttending)
+        contentValues.put(GROUPS_COURSE_ID,groups.courses?.id)
+        contentValues.put(GROUP_AMOUNT_STUDENT,groups.amountStudent)
+        database.insert(TABLE_GROUPS,null,contentValues)
+        database.close()
     }
 
     override fun showGroup(): List<Groups> {
-        TODO("Not yet implemented")
+        val list = ArrayList<Groups>()
+        val database = this.readableDatabase
+        val query = "select * from $TABLE_GROUPS"
+        val cursor = database.rawQuery(query,null)
+        if (cursor.moveToFirst()){
+            do {
+                val groups = Groups(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    getMentorById(cursor.getInt(2)),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    getCourseById(cursor.getInt(5)),
+                    cursor.getInt(6)
+                )
+                list.add(groups)
+            }while (cursor.moveToNext())
+        }
+        return list
     }
 
     override fun editGroup(groups: Groups): Int {
@@ -128,24 +154,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
         TODO("Not yet implemented")
     }
 
-    override fun getGroupById(id: Int): Groups {
-        val database = this.readableDatabase
-        val cursor = database.query(
-            TABLE_GROUPS, arrayOf(GROUP_ID, GROUPS_MENTOR_ID, GROUP_TIME, GROUP_NAME,
-                GROUP_DAY, GROUPS_COURSE_ID, GROUP_AMOUNT_STUDENT),"$GROUP_ID = ?",
-            arrayOf(id.toString()),null,null,null)
-        cursor.moveToFirst()
-        val groups = Groups(
-            cursor.getInt(0),
-            cursor.getString(1),
-            getMentorById(cursor.getInt(2)),
-            cursor.getString(3),
-            cursor.getString(4),
-            getCourseById(cursor.getInt(5)),
-            cursor.getInt(6)
-        )
-        return groups
-    }
+
 
     override fun addMentor(mentors: Mentors) {
         val database = this.writableDatabase
@@ -153,6 +162,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
         contentValues.put(MENTOR_NAME,mentors.firstname)
         contentValues.put(MENTOR_SURNAME,mentors.surname)
         contentValues.put(MENTOR_PHONE_NUMBER,mentors.phoneNumber)
+        contentValues.put(MENTORS_COURSE_ID,mentors.courses?.id)
         database.insert(TABLE_MENTORS,null,contentValues)
         database.close()
     }
@@ -168,8 +178,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
                     cursor.getInt(0),
                     cursor.getString(1),cursor.getString(2),
                     cursor.getString(3),
-                    getGroupById(cursor.getInt(4)),
-                    getCourseById(cursor.getInt(5))
+                    getCourseById(cursor.getInt(4))
                 )
                 list.add(mentors)
             }while (cursor.moveToNext())
@@ -190,7 +199,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
         val cursor = database.query(
             TABLE_MENTORS, arrayOf(
                 MENTOR_ID, MENTOR_NAME, MENTOR_SURNAME, MENTOR_PHONE_NUMBER,
-                MENTORS_GROUP_ID, MENTORS_COURSE_ID),"$MENTOR_ID = ?",
+                 MENTORS_COURSE_ID),"$MENTOR_ID = ?",
             arrayOf(id.toString()),null,null,null)
         cursor.moveToFirst()
         val mentors = Mentors(
@@ -198,8 +207,7 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME,null, DB_VE
             cursor.getString(1),
             cursor.getString(2),
             cursor.getString(3),
-            getGroupById(cursor.getInt(4)),
-            getCourseById(cursor.getInt(5))
+            getCourseById(cursor.getInt(4))
         )
         return mentors
     }

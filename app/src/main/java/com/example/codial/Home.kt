@@ -53,6 +53,9 @@ class Home : Fragment() {
         binding.ivMentors.setOnClickListener {
             binding.root.findNavController().navigate(R.id.listMentor)
         }
+        binding.ivGroups.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.listGroup)
+        }
 
 
 

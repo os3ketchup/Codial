@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codial.databinding.ItemGroupBinding
 import com.example.codial.models.Courses
+import com.example.codial.models.Mentors
 
 class MyCourseAdapter(var list: List<Courses>,val rvClick: RvClick): RecyclerView.Adapter<MyCourseAdapter.VH>() {
 
